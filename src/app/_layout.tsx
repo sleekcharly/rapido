@@ -8,6 +8,8 @@ const Layout = () => {
       <Stack.Screen name="role" />
       <Stack.Screen name="customer/auth" />
       <Stack.Screen name="captain/auth" />
+      <Stack.Screen name="customer/home" />
+      <Stack.Screen name="captain/home" />
     </Stack>
   );
 };
