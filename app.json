@@ -7,6 +7,7 @@
     "icon": "./src/assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
     "splash": {
       "image": "./src/assets/images/splash.png",
       "resizeMode": "contain",
@@ -14,17 +15,17 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.ritik.rapido",
+      "bundleIdentifier": "com.charles.rapido",
       "config": {
-                "googleMapsApiKey": "YOUR_GOOGLE_MAP_KEY"
-            }
+        "googleMapsApiKey": "AIzaSyCVoCVN6poFNuQch0rzyIJUx9tO96KBhjA"
+      }
     },
     "android": {
       "config": {
-                "googleMaps": {
-                    "apiKey": "YOUR_GOOGLE_MAP_KEY"
-                }
-            },
+        "googleMaps": {
+          "apiKey": "AIzaSyCVoCVN6poFNuQch0rzyIJUx9tO96KBhjA"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
