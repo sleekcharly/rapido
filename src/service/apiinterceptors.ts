@@ -27,3 +27,30 @@ export const refresh_token = async () => {
     logout();
   }
 };
+
+appAxios.interceptors.request.use(async (config) => {
+  const accessToken = tokenStorage.getString('access_token');
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
+  }
+  return config;
+});
+
+appAxios.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response && error.response.status === 401) {
+      try {
+        const newAccessToken = await refresh_token();
+        if (newAccessToken) {
+          error.config.headers.Authorization = `Bearer ${newAccessToken}`;
+          return axios(error.config);
+        }
+      } catch (error) {
+        console.log('Error refreshing token');
+      }
+    }
+
+    return Promise.reject(error);
+  },
+);
