@@ -4,6 +4,7 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import React, { useState } from 'react';
 import { authStyles } from '@/styles/authStyles';
@@ -13,12 +14,17 @@ import CustomText from '@/components/shared/CustomText';
 import PhoneInput from '@/components/shared/PhoneInput';
 import CustomButton from '@/components/shared/CustomButton';
 import { resetAndNavigate } from '@/utils/Helpers';
+import { signin } from '@/service/authService';
 
 const Auth = () => {
   const [phone, setPhone] = useState('');
 
   const handleNext = async () => {
-    resetAndNavigate('/captain/home');
+    if (!phone && phone.length !== 10) {
+      Alert.alert('Please enter your phone number');
+      return;
+    }
+    signin({ role: 'captain', phone });
   };
 
   return (

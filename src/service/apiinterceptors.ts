@@ -7,7 +7,7 @@ export const appAxios = axios.create({
   baseURL: BASE_URL,
 });
 
-export const refresh_token = async () => {
+export const refresh_tokens = async () => {
   try {
     const refreshToken = tokenStorage.getString('refresh_token');
     const response = await axios.post(`${BASE_URL}/auth/refresh-token`, {
@@ -41,7 +41,7 @@ appAxios.interceptors.response.use(
   async (error) => {
     if (error.response && error.response.status === 401) {
       try {
-        const newAccessToken = await refresh_token();
+        const newAccessToken = await refresh_tokens();
         if (newAccessToken) {
           error.config.headers.Authorization = `Bearer ${newAccessToken}`;
           return axios(error.config);
