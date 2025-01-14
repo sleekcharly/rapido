@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { BASE_URL } from './config';
 import { tokenStorage } from '@/store/storage';
-import { resetAndNavigate } from '@/utils/Helpers';
+import { logout } from './authService';
 
 export const appAxios = axios.create({
   baseURL: BASE_URL,
@@ -24,6 +24,6 @@ export const refresh_token = async () => {
   } catch (error) {
     console.log('REFRESH TOKEN ERROR');
     tokenStorage.clearAll();
-    resetAndNavigate('/role');
+    logout();
   }
 };
