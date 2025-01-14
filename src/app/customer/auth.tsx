@@ -14,8 +14,11 @@ import CustomText from '@/components/shared/CustomText';
 import PhoneInput from '@/components/shared/PhoneInput';
 import CustomButton from '@/components/shared/CustomButton';
 import { signin } from '@/service/authService';
+import { useWS } from '@/service/WSProvider';
 
 const Auth = () => {
+  const { updateAccessToken } = useWS();
+
   const [phone, setPhone] = useState('');
 
   const handleNext = async () => {
@@ -23,7 +26,7 @@ const Auth = () => {
       Alert.alert('Please enter your phone number');
       return;
     }
-    signin({ role: 'customer', phone });
+    signin({ role: 'customer', phone }, updateAccessToken);
   };
 
   return (
