@@ -1,5 +1,6 @@
 import { View, Text } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { logout } from '@/service/authService';
 
 const Home = () => {
   return (
